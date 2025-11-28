@@ -13,6 +13,11 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
         
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
         body {
             background-color: #000;
             color: #fff;
@@ -26,7 +31,6 @@
             background-position: center;
             background-attachment: fixed;
             position: relative;
-            overflow-x: hidden;
         }
         
         body::before {
@@ -46,16 +50,37 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            animation: fadeIn 1.5s ease-out;
+            margin-top: -12vh; /* Moved even higher */
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, opacity;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.98); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
         
         .profile-header {
-            margin-bottom: 30px;
+            margin-bottom: 18px;
+            animation: slideDown 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-25px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
         
         .profile-image {
@@ -63,50 +88,76 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 20px;
+            margin: 0 auto 12px;
             border: 3px solid #fff;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: transform, box-shadow;
         }
         
         .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(147, 51, 234, 0.6);
+            transform: scale(1.08) translateZ(0);
+            box-shadow: 0 0 35px rgba(147, 51, 234, 0.7);
         }
         
         .profile-name {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            animation: textGlow 3s ease-in-out infinite alternate;
+            will-change: text-shadow;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(147, 51, 234, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(147, 51, 234, 0.8), 0 0 20px rgba(147, 51, 234, 0.6); }
+            100% { text-shadow: 0 0 10px rgba(147, 51, 234, 0.5); }
         }
         
         .profile-username {
             color: #ccc;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
             font-size: 18px;
             font-weight: 400;
         }
         
         .profile-bio {
-            margin-bottom: 30px;
+            margin-bottom: 18px;
             padding: 0 10px;
             color: #aaa;
             font-size: 16px;
             line-height: 1.6;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(15px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-bottom: 30px;
+            gap: 14px;
+            margin-bottom: 18px;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+            will-change: transform, opacity;
         }
         
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 45px; /* 10% smaller than 50px */
+            height: 45px; /* 10% smaller than 50px */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -114,57 +165,61 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: #fff;
             text-decoration: none;
-            font-size: 22px;
-            transition: all 0.3s ease;
+            font-size: 20px; /* Slightly smaller icon */
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            will-change: transform, background-color, box-shadow;
         }
         
         .social-icon:hover {
             background-color: #fff;
             color: #000;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
         
         .social-icon.discord:hover {
             background-color: #5865F2;
             color: #fff;
-            box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.9);
         }
         
         .social-icon.youtube:hover {
             background-color: #FF0000;
             color: #fff;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
         }
         
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 10px;
+            animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+            will-change: transform, opacity;
         }
         
         .link-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 20px;
+            padding: 14px 20px;
             background-color: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             text-decoration: none;
             color: #fff;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            will-change: transform, box-shadow, border-color, background-color;
         }
         
         .link-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            border-color: rgba(147, 51, 234, 0.5);
-            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: rgba(147, 51, 234, 0.6);
+            background-color: rgba(255, 255, 255, 0.12);
         }
         
         .link-icon {
@@ -177,11 +232,12 @@
             justify-content: center;
             font-size: 18px;
             color: #fff;
-            transition: transform 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, color;
         }
         
         .link-item:hover .link-icon {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
             color: #9333ea;
         }
         
@@ -190,6 +246,12 @@
             font-size: 16px;
             text-align: center;
             flex: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover .link-text {
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
         }
         
         .link-arrow {
@@ -197,37 +259,50 @@
             right: 20px;
             color: #aaa;
             font-size: 18px;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, color;
         }
         
         .link-item:hover .link-arrow {
-            transform: translateX(5px);
+            transform: translateX(6px);
             color: #9333ea;
         }
         
         /* Simplified particle animation for background */
         .particles {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
             overflow: hidden;
+            pointer-events: none;
         }
         
         .particle {
             position: absolute;
             background: rgba(147, 51, 234, 0.3);
             border-radius: 50%;
-            animation: floatParticle 15s infinite linear;
+            animation: floatParticle 20s ease-in-out infinite;
+            will-change: transform, opacity;
         }
         
         @keyframes floatParticle {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+            0% { 
+                transform: translateY(100vh) translateX(0) scale(0.8); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.7; 
+            }
+            90% { 
+                opacity: 0.7; 
+            }
+            100% { 
+                transform: translateY(-100px) translateX(20px) scale(1); 
+                opacity: 0; 
+            }
         }
         
         /* Overlay styles */
@@ -242,11 +317,12 @@
             z-index: 100;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity;
         }
         
         .overlay.closing {
-            animation: fadeOut 0.3s ease-out forwards;
+            animation: fadeOut 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         
         @keyframes fadeOut {
@@ -263,18 +339,36 @@
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
-            animation: fadeIn 0.4s ease-out;
+            animation: scaleIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes scaleIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
         }
         
         .overlay-content.closing {
-            animation: slideUp 0.3s ease-out forwards;
+            animation: scaleOut 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         
-        @keyframes slideUp {
-            from { transform: translateY(0); opacity: 1; }
-            to { transform: translateY(-20px); opacity: 0; }
+        @keyframes scaleOut {
+            from { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+            to { 
+                opacity: 0; 
+                transform: scale(0.9); 
+            }
         }
         
         .overlay-title {
@@ -301,28 +395,30 @@
             border-radius: 12px;
             text-decoration: none;
             color: #fff;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
             flex: 1;
             min-width: 100px;
             gap: 8px;
+            will-change: transform, box-shadow, border-color, background-color;
         }
         
         .overlay-link:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            border-color: rgba(147, 51, 234, 0.5);
-            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(147, 51, 234, 0.6);
+            background-color: rgba(255, 255, 255, 0.12);
         }
         
         .overlay-link-icon {
             font-size: 18px;
-            transition: transform 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, color;
         }
         
         .overlay-link:hover .overlay-link-icon {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(5deg);
             color: #9333ea;
         }
         
@@ -340,28 +436,32 @@
             border-radius: 10px;
             color: #fff;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             font-weight: 500;
             position: relative;
             overflow: hidden;
             width: 100%;
+            will-change: transform, background-color, box-shadow;
         }
         
         .close-overlay:hover {
             background: rgba(147, 51, 234, 0.4);
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
         }
         
         @media (max-width: 480px) {
             .container {
                 max-width: 360px;
                 padding: 10px;
+                margin-top: -15vh; /* Even higher on mobile */
             }
             
             .profile-image {
                 width: 100px;
                 height: 100px;
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
             }
             
             .profile-name {
@@ -373,7 +473,7 @@
             }
             
             .link-item {
-                padding: 14px 18px;
+                padding: 12px 18px;
             }
             
             .link-icon {
@@ -385,13 +485,13 @@
             }
             
             .social-links {
-                gap: 14px;
+                gap: 12px;
             }
             
             .social-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
+                width: 40px; /* 10% smaller on mobile too */
+                height: 40px;
+                font-size: 18px;
             }
             
             .overlay-content {
@@ -417,10 +517,11 @@
         @media (max-width: 360px) {
             .container {
                 max-width: 320px;
+                margin-top: -18vh; /* Even higher on very small screens */
             }
             
             .link-item {
-                padding: 12px 16px;
+                padding: 10px 16px;
             }
             
             .link-icon {
@@ -494,14 +595,14 @@
         // Create floating particles (reduced count for performance)
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 10; // Reduced from 20 to 10
+            const particleCount = 8; // Further reduced for performance
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
                 // Random size
-                const size = Math.random() * 4 + 2; // Slightly smaller particles
+                const size = Math.random() * 4 + 2;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 
@@ -510,7 +611,7 @@
                 
                 // Random animation delay and duration
                 const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 15;
+                const duration = Math.random() * 10 + 20;
                 particle.style.animationDelay = `${delay}s`;
                 particle.style.animationDuration = `${duration}s`;
                 
@@ -543,7 +644,7 @@
                 // Remove closing classes for next time
                 marketplaceOverlay.classList.remove('closing');
                 overlayContent.classList.remove('closing');
-            }, 300);
+            }, 400);
         });
         
         // Close overlay when clicking outside content
@@ -559,7 +660,7 @@
                     // Remove closing classes for next time
                     marketplaceOverlay.classList.remove('closing');
                     overlayContent.classList.remove('closing');
-                }, 300);
+                }, 400);
             }
         });
         
