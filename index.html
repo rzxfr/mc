@@ -1,18 +1,747 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free</title>
-  <script>
-    setTimeout(() => {
-      window.location.href = "https://free-jfeh.onrender.com/";
-    }, 1000); // 1000 milliseconds = 1 second
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Crafty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: url('https://i.redd.it/what-is-this-ore-some-old-copper-texture-v0-tmm8vyua2y6c1.png?width=2560&format=png&auto=webp&s=46575982b970203b3cdd1dedfde246c6c687ae86');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-header {
+            margin-bottom: 30px;
+            animation: slideDown 1s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: pulsePurple 3s infinite alternate;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.6);
+        }
+        
+        @keyframes pulsePurple {
+            0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        }
+        
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            animation: glowPurple 2s infinite alternate;
+        }
+        
+        @keyframes glowPurple {
+            from { text-shadow: 0 0 5px rgba(147, 51, 234, 0.5); }
+            to { text-shadow: 0 0 15px rgba(147, 51, 234, 0.8), 0 0 20px rgba(147, 51, 234, 0.6); }
+        }
+        
+        .profile-username {
+            color: #ccc;
+            margin-bottom: 25px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        
+        .profile-bio {
+            margin-bottom: 30px;
+            padding: 0 10px;
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.6;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease-out 0.5s both;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .social-icon:hover::before {
+            left: 100%;
+        }
+        
+        .social-icon:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-icon.discord:hover {
+            background-color: #5865F2;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+        }
+        
+        .social-icon.youtube:hover {
+            background-color: #FF0000;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            animation: fadeInUp 1.2s ease-out 0.7s both;
+        }
+        
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .link-item:hover::before {
+            left: 100%;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(147, 51, 234, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .link-icon {
+            position: absolute;
+            left: 20px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+        
+        .link-item:hover .link-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #9333ea;
+        }
+        
+        .link-text {
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover .link-text {
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+        
+        .link-arrow {
+            position: absolute;
+            right: 20px;
+            color: #aaa;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover .link-arrow {
+            transform: translateX(5px);
+            color: #9333ea;
+        }
+        
+        /* Floating animation for the whole container */
+        .container {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Particle animation for background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(147, 51, 234, 0.3);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        }
+        
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(147, 51, 234, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Overlay styles - More transparent black */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* More transparent */
+            backdrop-filter: blur(15px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .overlay.closing {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .overlay-content {
+            background: rgba(20, 20, 20, 0.6); /* More transparent */
+            border-radius: 16px;
+            padding: 25px;
+            width: 90%;
+            max-width: 320px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.4);
+            backdrop-filter: blur(20px);
+            animation: slideDown 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .overlay-content.closing {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-20px); opacity: 0; }
+        }
+        
+        .overlay-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .overlay-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            animation: glowPurple 2s infinite alternate;
+        }
+        
+        .overlay-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .overlay-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            flex: 1;
+            min-width: 100px;
+            gap: 8px;
+        }
+        
+        .overlay-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .overlay-link:hover::before {
+            left: 100%;
+        }
+        
+        .overlay-link:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(147, 51, 234, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .overlay-link-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .overlay-link:hover .overlay-link-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: #9333ea;
+        }
+        
+        .overlay-link-text {
+            font-weight: 500;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .overlay-link:hover .overlay-link-text {
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        }
+        
+        .close-overlay {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(147, 51, 234, 0.5);
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .close-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .close-overlay:hover::before {
+            left: 100%;
+        }
+        
+        .close-overlay:hover {
+            background: rgba(147, 51, 234, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+        }
+        
+        .close-overlay:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                max-width: 360px;
+                padding: 10px;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile-name {
+                font-size: 28px;
+            }
+            
+            .profile-username {
+                font-size: 16px;
+            }
+            
+            .link-item {
+                padding: 14px 18px;
+            }
+            
+            .link-icon {
+                left: 18px;
+            }
+            
+            .link-arrow {
+                right: 18px;
+            }
+            
+            .social-links {
+                gap: 14px;
+            }
+            
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            
+            .overlay-content {
+                padding: 20px;
+                max-width: 280px;
+            }
+            
+            .overlay-links {
+                gap: 12px;
+            }
+            
+            .overlay-link {
+                padding: 12px 16px;
+                min-width: 80px;
+                gap: 6px;
+            }
+            
+            .overlay-link-icon {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .container {
+                max-width: 320px;
+            }
+            
+            .link-item {
+                padding: 12px 16px;
+            }
+            
+            .link-icon {
+                left: 16px;
+            }
+            
+            .link-arrow {
+                right: 16px;
+            }
+            
+            .overlay-content {
+                max-width: 260px;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; background-color: white;">
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Marketplace Overlay -->
+    <div class="overlay" id="marketplaceOverlay">
+        <div class="overlay-content" id="overlayContent">
+            <h2 class="overlay-title">Select</h2>
+            <div class="overlay-links">
+                <a href="https://craftydlc.netlify.app" class="overlay-link" target="_blank">
+                    <i class="fas fa-rocket overlay-link-icon"></i>
+                    <div class="overlay-link-text">V1</div>
+                </a>
+                <a href="https://marketplacedlc.netlify.app" class="overlay-link" target="_blank">
+                    <i class="fas fa-bolt overlay-link-icon"></i>
+                    <div class="overlay-link-text">V2</div>
+                </a>
+            </div>
+            <button class="close-overlay" id="closeOverlay">Close</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header class="profile-header">
+            <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/ee8d398c5a39bcad223ed10fd93fefb3~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=b0fab64d&x-expires=1764507600&x-signature=b02hEorXF33PDgQU19mg3lBiESw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2" alt="@Crafty" class="profile-image">
+            <h1 class="profile-name">@Crafty</h1>
+            
+            <p class="profile-bio">Follow</p>
+            
+            <div class="social-links">
+                <a href="https://discord.gg/8xg7wkFCdE" class="social-icon discord" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.youtube.com/@craftydlc" class="social-icon youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </header>
+        
+        <main class="links-container">
+            <a href="#" class="link-item" id="marketplaceBtn">
+                <div class="link-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="link-text">Marketplace</div>
+                <div class="link-arrow">→</div>
+            </a>
+            
+            <a href="https://yashofree.onrender.com" class="link-item" target="_blank">
+                <div class="link-icon"><i class="fas fa-globe"></i></div>
+                <div class="link-text">Website</div>
+                <div class="link-arrow">→</div>
+            </a>
+        </main>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Marketplace overlay functionality
+        const marketplaceBtn = document.getElementById('marketplaceBtn');
+        const marketplaceOverlay = document.getElementById('marketplaceOverlay');
+        const overlayContent = document.getElementById('overlayContent');
+        const closeOverlay = document.getElementById('closeOverlay');
+        
+        marketplaceBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            marketplaceOverlay.style.display = 'flex';
+            // Remove any closing classes if they exist
+            marketplaceOverlay.classList.remove('closing');
+            overlayContent.classList.remove('closing');
+        });
+        
+        closeOverlay.addEventListener('click', function() {
+            // Add closing animations
+            marketplaceOverlay.classList.add('closing');
+            overlayContent.classList.add('closing');
+            
+            // Hide overlay after animation completes
+            setTimeout(() => {
+                marketplaceOverlay.style.display = 'none';
+                // Remove closing classes for next time
+                marketplaceOverlay.classList.remove('closing');
+                overlayContent.classList.remove('closing');
+            }, 300);
+        });
+        
+        // Close overlay when clicking outside content
+        marketplaceOverlay.addEventListener('click', function(e) {
+            if (e.target === marketplaceOverlay) {
+                // Add closing animations
+                marketplaceOverlay.classList.add('closing');
+                overlayContent.classList.add('closing');
+                
+                // Hide overlay after animation completes
+                setTimeout(() => {
+                    marketplaceOverlay.style.display = 'none';
+                    // Remove closing classes for next time
+                    marketplaceOverlay.classList.remove('closing');
+                    overlayContent.classList.remove('closing');
+                }, 300);
+            }
+        });
+        
+        // Add ripple effect to links
+        document.querySelectorAll('.link-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Don't create ripple for marketplace button (it has overlay)
+                if (this.id === 'marketplaceBtn') return;
+                
+                // Create ripple element
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
 </body>
 </html>
-
-
-
